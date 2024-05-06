@@ -1,0 +1,49 @@
+{% extends 'webapp/base.html' %}
+
+{% block content %}
+
+    <h5>Welcome to the dashboard page! {{ user }}</h5>
+
+    <hr>
+
+    <a href="{% url 'create-record' %}" class="btn btn-outline-primary rounded btn-sm">
+        Create a new record &nbsp; <i class="fa fa-plus" aria-hidden="true"></i>
+
+    </a>
+
+    <hr>
+
+    <table class="table table-light table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">ID</th>
+                
+                <th scope="col">Full name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone</th>
+                <th scope="col">State</th>
+                <th scope="col">Lga</th>
+                <th scope="col">View</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if records %}
+                {% for record in records %}
+                    <tr>
+                        <td>{{ record.id }}</td>
+                       
+                        <td>{{ record.full_name }}</td> <!-- Assuming there's a 'full_name' attribute -->
+                        <td>{{ record.email }}</td> <!-- Assuming there's an 'email' attribute -->
+                        <td>{{ record.phone }}</td> <!-- Assuming there's a 'phone' attribute -->
+                        <td>{{ record.state }}</td> <!-- Assuming there's a 'state' attribute -->
+                        <td>{{ record.lga }}</td> <!-- Assuming there's a 'lga' attribute -->
+                        <td> <a href="{% url 'record' record.id %}"><i class="fa fa-info-circle" aria-hidden="true"></i>
+                        </a> </td>
+                       
+                    </tr>
+                {% endfor %}
+            {% endif %}
+        </tbody>
+    </table>
+
+{% endblock %}

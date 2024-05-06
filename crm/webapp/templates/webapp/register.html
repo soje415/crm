@@ -1,0 +1,52 @@
+{% extends 'webapp/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+    <body>
+        
+
+
+        <div class="container bg-light shadow-md p-5 form-layout">
+
+            <h3 class="text-center">Create your account</h3>
+
+            <h5 class="text-center">Start managing your clients today</h5>
+
+            <hr>
+            <br>
+
+            <form method="POST" autocomplete="off">
+
+                {% csrf_token %}
+                
+                {{form|crispy}}
+
+                <br>
+
+                <button type="submit" class="btn btn-primary w-100 btn-block p-2 rounded">Create Account</button>
+                <br>
+                <hr>
+                <button type="submit" class="btn btn-primary w-100 btn-block p-2 rounded">Register with Google</button>
+                <br>
+                <hr>
+                <button type="submit" class="btn btn-primary w-100 btn-block p-2 rounded">Register with Facebook</button>
+
+            </form>
+
+            <br>
+
+            <div class="text-center">
+
+                <p>Already hane an account</p> <a href="{% url 'my_login' %}">Login</a>
+
+            </div>
+
+        </div>
+
+        <br>
+
+    </body> 
+
+{% endblock %}
